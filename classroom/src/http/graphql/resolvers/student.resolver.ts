@@ -15,11 +15,11 @@ export class StudentResolver {
     private enrollmentsService: EnrollmentsService
   ) { }
 
-  @Query(() => [Student])
-  @UseGuards(AuthorizationGuard)
-  me(@CurrentUser() user: IAuthUser) {
-    return this.studentsService.getStudentByAuthId(user.sub)
-  }
+  // @Query(() => [Student])
+  // @UseGuards(AuthorizationGuard)
+  // me(@CurrentUser() user: IAuthUser) {
+  //   return this.studentsService.getStudentByAuthId(user.sub)
+  // }
 
   @Query(() => [Student])
   @UseGuards(AuthorizationGuard)

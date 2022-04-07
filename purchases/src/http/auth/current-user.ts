@@ -11,8 +11,6 @@ export const CurrentUser = createParamDecorator(
 
     const req = ctx.getContext().req
 
-    console.log(req.user)
-
     return req.user
   }
 )

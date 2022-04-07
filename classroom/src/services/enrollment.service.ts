@@ -6,11 +6,16 @@ interface IGetCourseAndStudent {
   studentId: string;
 }
 
+interface ICreateEnrollment {
+  courseId: string;
+  studentId: string;
+}
+
 @Injectable()
 export class EnrollmentsService {
   constructor(private prisma: PrismaService) { }
 
-  getByCourseAndStudentId({courseId, studentId}: IGetCourseAndStudent) {
+  getByCourseAndStudentId({ courseId, studentId }: IGetCourseAndStudent) {
     return this.prisma.enrollment.findFirst({
       where: {
         courseId,
@@ -40,6 +45,15 @@ export class EnrollmentsService {
       orderBy: {
         createdAt: "desc"
       }
+    })
+  }
+
+  createEnrollment({ courseId, studentId }: ICreateEnrollment) {
+    return this.prisma.enrollment.create({
+      data: {
+        courseId,
+        studentId,
+      },
     })
   }
 }
